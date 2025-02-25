@@ -176,3 +176,5 @@ data/
 
 # IDE
 .idea
+models/
+repomix-output.txt
