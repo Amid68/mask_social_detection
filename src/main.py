@@ -2,14 +2,13 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-
-# Import our custom modules
+import os
 from face_detection import load_face_detector, detect_faces
 from social_distance import check_social_distance
 from mask_detection import load_trained_model, predict_mask
 
 # Global parameters and file paths
-HAAR_CASCADE_PATH = 'data/haarcascades/haarcascade_frontalface_default.xml'
+HAAR_CASCADE_PATH = '../data/haarcascades/haarcascade_frontalface_default.xml'
 MIN_DISTANCE = 130  # Minimum allowed distance in pixels
 MASK_LABELS = {0: 'MASK', 1: 'NO MASK'}
 COLOR_MAPPING = {0: (0, 255, 0), 1: (255, 0, 0)}  # Green for safe, Red for violation
@@ -20,10 +19,10 @@ def main():
     face_cascade = load_face_detector(HAAR_CASCADE_PATH)
 
     # Load the pre-trained mask detection model (ensure this file exists in the models/ folder)
-    mask_model = load_trained_model('models/masknet.h5')
+    mask_model = load_trained_model('../models/masknet.keras')
 
     # Read the input image (change the path to your test image)
-    image_path = 'data/sample_image.png'
+    image_path = '../data/sample_image.png'
     img = cv2.imread(image_path)
     if img is None:
         print("Error: Image not found. Please check the path.")

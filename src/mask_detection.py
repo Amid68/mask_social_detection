@@ -1,9 +1,9 @@
 # src/mask_detection.py
 import numpy as np
-from keras.applications.vgg19 import VGG19
-from keras.models import Sequential, load_model
-from keras.layers import Flatten, Dense
-from keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.applications.vgg19 import VGG19
+from tensorflow.keras.models import Sequential, load_model
+from tensorflow.keras.layers import Flatten, Dense
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 
 def build_mask_model(input_shape=(128, 128, 3), num_classes=2):
@@ -112,7 +112,7 @@ def load_trained_model(model_path):
     """
     Load a trained mask detection model from disk.
 
-    :param model_path: Path to the saved model file (e.g., 'models/masknet.h5').
+    :param model_path: Path to the saved model file (e.g., 'models/masknet.keras').
     :return: Loaded Keras model.
     """
     return load_model(model_path)
